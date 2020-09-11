@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NativeSelect,FormControl } from "@material-ui/core";
 import styles from "./CountryPicker.module.css";
 import { countryData }  from "../../apis";
-const CountryPicker = () => {
+const CountryPicker = ({handleCountryChange}) => {
   const [fetchedCountry, setFetchedCountry] = useState([]);
   useEffect(() => {
    const fetchCountry = async () => {
@@ -14,9 +14,13 @@ const CountryPicker = () => {
  
   return (
     <FormControl className={styles.formControl}>
-      <NativeSelect>
+      <NativeSelect defaultValue="" onChange={(e)=>handleCountryChange(e.target.value)}>
         <option value="global">GLobal</option>
-        {fetchedCountry.map((country,i) => <option key={i} value={country}>{country}</option>)}
+        {fetchedCountry.map((country, i) => (
+          <option key={i} value={country}>
+            {country}
+          </option>
+        ))}
       </NativeSelect>
     </FormControl>
   );
