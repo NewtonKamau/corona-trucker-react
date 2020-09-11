@@ -14,9 +14,10 @@ function App() {
       
      fetchedData();
    }, []);
-  function handleCountryChange(country)  {
+ async  function  handleCountryChange(country)  {
     //fetch data
-    console.log(country);
+   const fetchedData = await fetchData(country);
+    console.log(fetchedData);
     //set state
   }
   return (
