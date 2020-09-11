@@ -3,8 +3,8 @@ import { Cards, Chart, CountryPicker } from "./components/";
 import styles from "./App.module.css";
 import { fetchData } from "./apis";
 function App() {
-   const [data, setData] = useState({ hits: [] });
-
+   const [data, setData] = useState({  });
+  
    useEffect(() => {
      const fetchedData = async () => {
        const fetchedData = await fetchData()
@@ -14,13 +14,18 @@ function App() {
       
      fetchedData();
    }, []);
+  function handleCountryChange(country)  {
+    //fetch data
+    console.log(country);
+    //set state
+  }
   return (
     <div className={styles.container}>
       <Cards 
       data = {data}
        
       />
-      <CountryPicker />
+      <CountryPicker handleCountryChange={handleCountryChange} />
       <Chart />
     </div>
   );
