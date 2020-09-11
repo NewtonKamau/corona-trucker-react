@@ -3,10 +3,16 @@ import axios from "axios";
 //api url
 const url = process.env.REACT_APP_CORONA_API;
 //get global data 
-export const fetchData = async () => {
+export const fetchData = async (country) => {
+  //make url fetched data dynamic by passing country at the as a parameter
+  let changeableUrl = url;
+  //if the user sets a country, we get data of that country from our api
+  if (country) {
+    changeableUrl = `${url}/countries/${country}`;
+  }
     try {
         //get all the data from the api and destructure the object 
-        const {data : {confirmed,recovered,deaths,lastUpdate}} = await axios.get(url);
+        const {data : {confirmed,recovered,deaths,lastUpdate}} = await axios.get(changeableUrl);
         //get specific data from the api and store in a variable 
         return { confirmed,recovered, deaths,lastUpdate }
     } catch (error) {
