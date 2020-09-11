@@ -2,7 +2,7 @@ import axios from "axios";
 
 //api url
 const url = process.env.REACT_APP_CORONA_API;
-
+//get global data 
 export const fetchData = async () => {
     try {
         //get all the data from the api and destructure the object 
@@ -13,6 +13,7 @@ export const fetchData = async () => {
         console.log(error);
     }
 }
+//fetch daily data 
 export const fetchDailyData = async () => {
   try {
     const { data } = await axios.get(`${url}/daily`);
@@ -26,6 +27,8 @@ export const fetchDailyData = async () => {
     return error;
   }
 };
+
+//fetch single country data
 export const countryData = async () => {
   try {
     const {data:{countries}}= await axios.get(`${url}/countries`);
