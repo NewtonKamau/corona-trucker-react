@@ -4,7 +4,7 @@ import styles from "./App.module.css";
 import { fetchData } from "./apis";
 function App() {
    const [data, setData] = useState({  });
-  
+    const [country,setCountry] = useState({})
    useEffect(() => {
      const fetchedData = async () => {
        const fetchedData = await fetchData()
@@ -17,17 +17,19 @@ function App() {
  async  function  handleCountryChange(country)  {
     //fetch data
    const fetchedData = await fetchData(country);
-    console.log(fetchedData);
+  
     //set state
+   setCountry({ fetchedData:fetchedData, country:country });
+  
   }
   return (
     <div className={styles.container}>
       <Cards 
-      data = {data}
-       
+      data = {data }
+       country = {country}
       />
       <CountryPicker handleCountryChange={handleCountryChange} />
-      <Chart />
+      <Chart data={data} country={country} />
     </div>
   );
 }
