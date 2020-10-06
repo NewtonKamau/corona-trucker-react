@@ -17,16 +17,16 @@ function App() {
  async  function  handleCountryChange(country)  {
     //fetch data
    const fetchedData = await fetchData(country);
-  
+   console.log(fetchedData,country);
     //set state
-   setCountry({ fetchedData:fetchedData, country:country });
-  
+   setCountry({country:country})
+ 
   }
   return (
     <div className={styles.container}>
       <Cards 
-      data = {data }
-       country = {country}
+      data = {data  }
+      country = {country}
       />
       <CountryPicker handleCountryChange={handleCountryChange} />
       <Chart data={data} country={country} />
