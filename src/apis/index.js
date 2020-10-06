@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //api url
-const url = process.env.REACT_APP_CORONA_API;
+const url = 'https://covid19.mathdro.id/api';
 //get global data 
 export const fetchData = async (country) => {
   //make url fetched data dynamic by passing country at the as a parameter
