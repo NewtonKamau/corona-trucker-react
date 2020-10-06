@@ -4,7 +4,7 @@ import {
   CardContent,
   Typography,
   Grid,
-  StylesProvider,
+ 
 } from "@material-ui/core";
 import CountUp from "react-countup";
 import cx from "classnames";
